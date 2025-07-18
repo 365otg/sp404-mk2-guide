@@ -1,0 +1,2108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charles Paris's SP-404MK2 Guide: Tips & Tricks</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Charles Paris's comprehensive guide to the Roland SP-404MK2. Discover essential tips, advanced techniques, workflow hacks, and AI-powered suggestions for sampling, effects, patterns, DJing, and more. Your ultimate resource for mastering the SP-404MK2.">
+    <meta name="keywords" content="SP-404MK2, SP404MKII, Roland SP-404, Sampler, Beatmaker, Looper, Effects, Sampling, Resampling, TR-REC, Pattern Sequencer, DJ Mode, Chop, Skip Back, Automation, MIDI Sync, External Control, Firmware Update, Import Samples, Export Samples, Backup, Troubleshooting, Koala Sampler, Serato DJ, Serato Studio, Lofi Beats, Hip-hop Production, Live Performance, Finger Drumming, Vinyl Simulation, How to, Tutorial, Guide, Tips and Tricks, Best Practices, Workflow, Setup, Charles Paris">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- jsPDF library for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1A1A1D; /* Very dark grey-blue */
+            color: #E0E0E0; /* Light grey text */
+            padding-top: 4rem; /* Increased vertical padding */
+            padding-bottom: 4rem;
+            /* Subtle animated gradient background */
+            background-image: linear-gradient(135deg, #101012 0%, #1A1A1D 100%);
+            background-size: 200% 200%;
+            animation: gradient-animation 15s ease infinite;
+        }
+
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .card {
+            background-color: #1E1E1E; /* Slightly lighter grey-blue */
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5); /* Softer, deeper shadow */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-7px); /* More pronounced lift */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+        }
+        .tip-category-button {
+            background-color: #4A4A50; /* Muted dark grey for buttons */
+            color: #ffffff;
+            padding: 16px 32px; /* Larger buttons */
+            border-radius: 12px; /* More rounded corners */
+            font-weight: 600;
+            letter-spacing: 0.08em; /* Increased letter spacing */
+            transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out, box-shadow 0.2s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .tip-category-button:hover {
+            background-color: #5A5A60; /* Lighter muted grey on hover */
+            transform: translateY(-3px); /* More pronounced lift */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+        .tip-category-button.active {
+            background-color: #00C0FF; /* Soft, inviting blue active color */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+        }
+        .tip-item {
+            background-color: #2A2A30; /* Another shade for distinction */
+            border-radius: 10px;
+            padding: 20px; /* More padding inside cards */
+            margin-bottom: 16px; /* More space between cards */
+            border-left: 5px solid #00C0FF; /* Soft blue accent border */
+        }
+        .modal {
+            background-color: rgba(0, 0, 0, 0.85); /* Slightly darker modal overlay */
+        }
+        .modal-content {
+            background-color: #1E1E1E; /* Same as card for consistency */
+            border-radius: 16px; /* More rounded modal */
+        }
+        .close-button {
+            color: #F0F0F0;
+            font-size: 1.8rem; /* Larger close button */
+            transition: color 0.2s;
+        }
+        .close-button:hover {
+            color: #FF8888; /* Softer red on hover */
+        }
+        .search-input {
+            background-color: #1A1A1D;
+            border: 1px solid #4A4A50; /* Border matching muted grey */
+            color: #F0F0F0;
+            padding: 14px 20px; /* Larger input */
+            border-radius: 10px; /* More rounded input */
+            outline: none;
+            width: 100%;
+            max-width: 450px; /* Slightly wider search input */
+        }
+        .search-input::placeholder {
+            color: #A0A0A0;
+        }
+        .search-button {
+            background-color: #00C0FF; /* Soft blue search button */
+            color: #ffffff;
+            padding: 14px 20px; /* Consistent with input */
+            border-radius: 10px;
+            font-weight: 600;
+            transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .search-button:hover {
+            background-color: #33D4FF; /* Lighter soft blue on hover */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+        .ai-suggestions-container {
+            margin-top: 32px; /* More space above */
+            padding-top: 25px; /* More space inside */
+            border-top: 1px solid #4A4A50; /* Border matching muted grey */
+        }
+        .loading-indicator {
+            display: inline-block;
+            margin-left: 15px; /* More space */
+            color: #A0A0A0;
+        }
+        .tip-icon {
+            margin-right: 12px; /* More space for icon */
+            color: #00C0FF; /* Soft blue icon color */
+            font-size: 1.1em; /* Slightly larger icon */
+        }
+        .copy-button, .external-link-button, #download-pdf-button {
+            background-color: #4A4A50;
+            color: #ffffff;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: background-color 0.2s ease-in-out;
+            margin-top: 1rem;
+            display: inline-flex; /* Allows gap between buttons */
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+        .copy-button:hover, .external-link-button:hover, #download-pdf-button:hover {
+            background-color: #5A5A60;
+        }
+        .external-link-button {
+            background-color: #00C0FF;
+            margin-left: 0.5rem;
+        }
+        .external-link-button:hover {
+            background-color: #33D4FF;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center px-4">
+
+    <header class="text-center mb-16">
+        <h1 class="text-6xl font-bold text-white mb-6">SP-404MK2 Nexus</h1>
+        <p class="text-2xl text-gray-300">Unlock the full potential of your Roland SP-404MK2!</p>
+    </header>
+
+    <main class="w-full max-w-6xl">
+        <div class="flex flex-col sm:flex-row justify-center items-center mb-16 gap-4">
+            <input type="search" id="search-input" placeholder="Search tips..." class="search-input">
+            <button id="search-button" class="search-button">Search</button>
+        </div>
+
+        <!-- Quick Reference Section -->
+        <section class="mb-16 p-6 bg-[#1E1E1E] rounded-lg shadow-xl">
+            <h2 class="text-3xl font-bold text-white mb-6 text-center">Essential Tips to Get You Started <i class="fa-solid fa-bolt tip-icon"></i></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="tip-item border-l-4 border-[#00C0FF]">
+                    <h4 class="text-xl font-semibold text-white mb-2">Sampling: Skip-Back Capture</h4>
+                    <p class="text-gray-400 text-sm">Catch happy accidents: If [MARK] blinks, press it to save the last 25s/40s of audio.</p>
+                </div>
+                <div class="tip-item border-l-4 border-[#00C0FF]">
+                    <h4 class="text-xl font-semibold text-white mb-2">Effects: MUTE BUS for Breaks</h4>
+                    <p class="text-gray-400 text-sm">Instantly create effect tails: Hold [SHIFT] + [BUS FX] to mute dry signal, leaving only effects.</p>
+                </div>
+                <div class="tip-item border-l-4 border-[#00C0FF]">
+                    <h4 class="text-xl font-semibold text-white mb-2">Patterns: TR-REC Step Sequencing</h4>
+                    <p class="text-gray-400 text-sm">Build drum patterns precisely: [SHIFT] + [REC] to enter TR-REC, then tap pads for steps.</p>
+                </div>
+                <div class="tip-item border-l-4 border-[#00C0FF]">
+                    <h4 class="text-xl font-semibold text-white mb-2">Shortcuts: Lock Live Play</h4>
+                    <p class="text-gray-400 text-sm">Prevent accidental edits during performance: Hold [SHIFT] + [REMAIN] for 3s to disable edit buttons.</p>
+                </div>
+                <div class="tip-item border-l-4 border-[#00C0FF]">
+                    <h4 class="text-xl font-semibold text-white mb-2">Utility: Backup Your Data</h4>
+                    <p class="text-gray-400 text-sm">Protect your work: Regularly backup all projects and samples to SD card via UTILITY > BACKUP.</p>
+                </div>
+                <div class="tip-item border-l-4 border-[#00C0FF]">
+                    <h4 class="text-xl font-semibold text-white mb-2">DJ Mode: Realtime Cues</h4>
+                    <p class="text-gray-400 text-sm">Set cues on the fly: In DJ Mode, hold [SHIFT] + [MARK] to add cue points during playback.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <div class="flex flex-wrap justify-center gap-6 mb-16">
+            <button class="tip-category-button active" data-category="all">All Tips</button>
+            <button class="tip-category-button" data-category="concepts">Concepts</button>
+            <button class="tip-category-button" data-category="sampling">Sampling</button>
+            <button class="tip-category-button" data-category="effects">Effects</button>
+            <button class="tip-category-button" data-category="patterns">Patterns</button>
+            <button class="tip-category-button" data-category="tempo">Tempo</button>
+            <button class="tip-category-button" data-category="djmode">DJ Mode</button>
+            <button class="tip-category-button" data-category="shortcuts">Shortcuts</button>
+            <button class="tip-category-button" data-category="utility">Utility</button>
+            <button class="tip-category-button" data-category="koala">Koala Sampler</button>
+            <button class="tip-category-button" data-category="serato_studio">Serato Studio</button>
+            <button class="tip-category-button" data-category="serato_dj">Serato DJ</button>
+            <button class="tip-category-button" data-category="midi">MIDI</button>
+            <button class="tip-category-button" data-category="troubleshooting">Troubleshooting</button>
+            <button class="tip-category-button" data-category="pro_tips">Pro Tips</button>
+        </div>
+
+        <section id="tips-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <!-- Tips will be loaded here by JavaScript -->
+        </section>
+        
+        <div class="flex justify-center mt-16">
+            <button id="download-pdf-button" class="search-button"><i class="fa-solid fa-file-pdf"></i> Download All Tips as PDF</button>
+        </div>
+    </main>
+
+    <!-- Modal for detailed tip view -->
+    <div id="tip-modal" class="modal fixed inset-0 flex items-center justify-center p-4 hidden">
+        <div class="modal-content w-full max-w-xl p-8 relative">
+            <button id="close-modal" class="close-button absolute top-4 right-4">&times;</button>
+            <h3 id="modal-title" class="text-4xl font-semibold text-white mb-6"></h3>
+            <p id="modal-description" class="text-gray-300 text-lg leading-relaxed"></p>
+            <p id="modal-source" class="text-sm text-gray-400 mt-6"></p>
+
+            <div class="flex flex-wrap gap-2 mt-4">
+                <button id="copy-tip-button" class="copy-button"><i class="fa-solid fa-copy"></i> Copy Tip</button>
+                <a id="external-link-button" href="#" target="_blank" class="external-link-button hidden"><i class="fa-solid fa-external-link-alt"></i> Go to Source</a>
+            </div>
+
+            <div id="ai-suggestions-section" class="ai-suggestions-container hidden">
+                <h4 class="text-2xl font-semibold text-white mb-4">AI Suggestions:</h4>
+                <div id="ai-suggestions-content" class="text-gray-300 text-lg leading-relaxed"></div>
+                <button id="get-ai-suggestions" class="search-button mt-6">Get AI Suggestions</button>
+                <span id="ai-loading-indicator" class="loading-indicator hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Ensure jsPDF is loaded before use
+        const { jsPDF } = window.jspdf;
+
+        const tipsData = [
+            // --- CONCEPTS ---
+            {
+                category: "concepts",
+                title: "Understanding Samples",
+                description: "Samples are recorded audio data with settings like loop points and effects routing. They are assigned to pads or used within patterns.",
+                source: "Reference Manual p.10"
+            },
+            {
+                category: "concepts",
+                title: "Understanding Patterns",
+                description: "Patterns define the playback order of samples, forming the basis for songs. Record your performances into patterns using the sequencer.",
+                source: "Reference Manual p.11"
+            },
+            {
+                category: "concepts",
+                title: "Banks and Projects Structure",
+                description: "A 'bank' holds 16 samples and 16 patterns (10 banks A-J). A 'project' manages 10 banks of samples and patterns, with 16 projects available.",
+                source: "Reference Manual p.11"
+            },
+            {
+                category: "concepts",
+                title: "SP-404MK2 Panel Overview",
+                description: "Familiarize yourself with the main sections: Volume, Control knobs, Display, Effect buttons, Pattern Sequencer, Sample Edit, Sampling, Sample Mode, Pads, Banks, Shift, Hold, Ext Source, Sub Pad.",
+                source: "Reference Manual p.5"
+            },
+            {
+                category: "concepts",
+                title: "Connecting External Gear",
+                description: "Connect amps/speakers to LINE OUT, headphones to PHONES. Use LINE IN for instruments, INPUT for mic/guitar (adjust [MIC/GUITAR] switch for impedance).",
+                source: "Reference Manual p.12-13"
+            },
+            {
+                category: "concepts",
+                title: "USB Audio & MIDI Connection",
+                description: "Connect to computer/mobile via USB-C for audio and MIDI. No driver needed. Ensure correct USB cable (data-enabled) and sufficient power (1.5A+ for USB power).",
+                source: "Reference Manual p.13-15"
+            },
+            {
+                category: "concepts",
+                title: "Powering the Unit",
+                description: "Power via AC adaptor (included), USB-C (1.5A+ source), or 6 AA batteries (Ni-MH/Alkaline). Prioritization: DC IN > USB > Batteries.",
+                source: "Reference Manual p.14-15"
+            },
+            {
+                category: "concepts",
+                title: "Turning Power On/Off Safely",
+                description: "Always turn volume down before powering on/off. Turn on connected devices then amp/speakers after SP-404MK2. Reverse for power off.",
+                source: "Reference Manual p.15-16"
+            },
+            {
+                category: "concepts",
+                title: "Sample Mode Display",
+                description: "Top screen shows Project number, Bank/sample number, Assigned BUS FX, Fixed Velocity status, Power supply type (DC/USB/BAT), and BPM of selected sample.",
+                source: "Reference Manual p.16"
+            },
+
+            // --- SAMPLING ---
+            {
+                category: "sampling",
+                title: "Basic Sampling Setup",
+                description: "Press [REC], select a blinking red pad, then [REC] again to start/stop recording. Adjust tempo with [CTRL 1] and input volume with [CTRL 3].",
+                source: "Reference Manual p.33-35"
+            },
+            {
+                category: "sampling",
+                title: "Count-In Before Sampling",
+                description: "Add a count-in: Hold [SHIFT] + pad [10] to cycle through count-in options (1MEAS, 2MEAS, WAIT, OFF). 'WAIT' starts recording when audio input exceeds a set level.",
+                source: "Reference Manual p.35"
+            },
+            {
+                category: "sampling",
+                title: "Automatic End Point (END SNAP)",
+                description: "Enable 'END Snap ON' by pressing [START/END] after [REC] to automatically set the sample's end point to the nearest beat.",
+                source: "Reference Manual p.35-36"
+            },
+            {
+                category: "sampling",
+                title: "Resampling for Effects & Merging",
+                description: "Resample to combine multiple samples or include effects: Press [RESAMPLE], set ROUTING to 'Mix' in RECORD SETTING. This captures the SP-404's output.",
+                source: "Reference Manual p.37-38"
+            },
+            {
+                category: "sampling",
+                title: "Skip-Back Sampling",
+                description: "Capture past audio (up to 25s/40s max): If [MARK] blinks (indicating audio detection), press it to access skip-back memory, then select a pad to save. Great for catching happy accidents.",
+                source: "Reference Manual p.38-39"
+            },
+            {
+                category: "sampling",
+                title: "Looper Function",
+                description: "Record sounds in a loop: Set 'MARK Function' to 'Looper' in UTILITY > SYSTEM. Press [MARK], configure parameters, then [REC].",
+                source: "Reference Manual p.41"
+            },
+            {
+                category: "sampling",
+                title: "Sound Generator",
+                description: "Create synth sounds directly on the unit: Hold [SHIFT] + [RECORD SETTING]. Adjust Type (waveform), Freq, Level, Pad Length, Duty Cycle, Balance with [CTRL] knobs. Play with pads, then [REC] to export to a pad.",
+                source: "Reference Manual p.43"
+            },
+            {
+                category: "sampling",
+                title: "Setting Playback & Loop Regions (START/END)",
+                description: "Trim unnecessary parts of a sample or set loop points: Press [START/END]. Use [CTRL 1] for start, [CTRL 2] for loop, [CTRL 3] for end. [SHIFT] + [CTRL] for fine-tuning. [DEL] to initialize.",
+                source: "Reference Manual p.44"
+            },
+            {
+                category: "sampling",
+                title: "Processing Samples (Truncate, Normalize, Emphasis)",
+                description: "After setting START/END points, press [VALUE] knob in Sample Edit to access menu. Select TRUNCATE (trim), NORMALIZE (increase volume), or EMPHASIS (boost high-freq). Note: This directly alters the original sample.",
+                source: "Reference Manual p.45"
+            },
+            {
+                category: "sampling",
+                title: "Marking & Splitting Samples",
+                description: "Split a sample into multiple smaller samples using markers. Hold [SHIFT] + [START/END] to enter marker setting screen. Use [CTRL 1] to move cursor, then [MARK] to add markers.",
+                source: "Reference Manual p.45-46"
+            },
+            {
+                category: "sampling",
+                title: "Auto Mark Function",
+                description: "Automatically add markers based on conditions: In marker setting screen, press [VALUE] knob, select 'AUTO MARK'. Choose TIME DIVISION (divide equally), LEVEL (by audio level), or TRANSIENT (by sharp attacks).",
+                source: "Reference Manual p.47"
+            },
+            {
+                category: "sampling",
+                title: "Chop: Split & Assign to Pads",
+                description: "Split a sample at marker positions and assign resulting samples to separate pads: After adding markers, press [VALUE] knob, select 'ASSIGN TO PAD'. Choose destination pads, then press [VALUE] to confirm.",
+                source: "Reference Manual p.48"
+            },
+            {
+                category: "sampling",
+                title: "Envelope Settings (Fade In/Out)",
+                description: "Control how sample volume changes over time: Hold [SHIFT] + [PITCH/SPEED]. Adjust ATTACK (fade-in), HOLD (playback range), and RELEASE (fade-out) with [CTRL] knobs.",
+                source: "Reference Manual p.48-49"
+            },
+            {
+                category: "sampling",
+                title: "Playing Back Samples (SAMPLE MODE)",
+                description: "Press pads [1-16] to play samples. Unit enters Sample Mode when powered on (pads light orange). If not, press [EXIT] multiple times. If pads blink blue, press [EXIT] then [PATTERN SELECT].",
+                source: "Reference Manual p.17"
+            },
+            {
+                category: "sampling",
+                title: "Sample Playback Modes (Gate, One-shot, Loop)",
+                description: "Sample playback depends on mode: 'Gate' (plays only while pad pressed), 'One-shot' (plays once to end, pad operations disabled), 'Loop' (plays repeatedly).",
+                source: "Reference Manual p.17"
+            },
+            {
+                category: "sampling",
+                title: "Playing Back Only While Pad Pressed (GATE)",
+                description: "Toggle gate function: Press [GATE] button. When on, samples play only while pads are pressed. Also affects [EXT SOURCE] button.",
+                source: "Reference Manual p.18"
+            },
+            {
+                category: "sampling",
+                title: "Playing Back Samples Only One Time (One-shot Playback)",
+                description: "Set sample playback to one-shot: Hold [VALUE] knob and press [GATE] button. [GATE] button blinks slowly. Loop function turns off automatically.",
+                source: "Reference Manual p.19"
+            },
+            {
+                category: "sampling",
+                title: "Playing Back Samples Repeatedly (LOOP)",
+                description: "Use loop function: Press [LOOP] button (lights up). Loop plays forward. To retrigger, hold [HOLD] + pad. To play in reverse, also press [REVERSE]. For ping-pong loop, hold [SHIFT] + [LOOP].",
+                source: "Reference Manual p.19-20"
+            },
+            {
+                category: "sampling",
+                title: "Playing Back a Sample in Reverse (REVERSE)",
+                description: "Play samples in reverse: Select sample. Press [REVERSE] button (lights up). Reverse playback starts from end or current position depending on 'Reverse Type' setting (System parameter).",
+                source: "Reference Manual p.20"
+            },
+            {
+                category: "sampling",
+                title: "Playing Back Samples in Detailed Steps (ROLL)",
+                description: "Repeatedly play samples at a set interval: Hold [ROLL] + pads [1-16]. Can play up to four samples as a roll. To roll during playback, press [ROLL] while sample is playing. Roll starts when finger lifted.",
+                source: "Reference Manual p.20-21"
+            },
+            {
+                category: "sampling",
+                title: "Setting the Roll Interval",
+                description: "Adjust how fast roll repeats: Hold [SHIFT] + [ROLL]. Cycle through 1/4, 1/8, 1/16, 1/32, 1/64 notes, and triplets. If interval longer than sample, sample loops. Shorten roll interval mid-play: Hold [ROLL] + turn [VALUE] knob clockwise.",
+                source: "Reference Manual p.21-22"
+            },
+            {
+                category: "sampling",
+                title: "Setting a Fixed Sample Volume (FIXED VELOCITY)",
+                description: "Force sample playback at max velocity (127): Hold [SHIFT] + pad [1]. 'FIXED VELOCITY ON' is shown. To cancel, repeat operation.",
+                source: "Reference Manual p.22"
+            },
+            {
+                category: "sampling",
+                title: "Changing Sample Volume for Playback (16 VELOCITY)",
+                description: "Change sample volume in steps: Select sample. Hold [SHIFT] + pad [2]. 16 VELOCITY screen appears. Press pads [1-16] to play sample at corresponding velocity. Press [EXIT] to exit.",
+                source: "Reference Manual p.22-23"
+            },
+            {
+                category: "sampling",
+                title: "Playing Back Samples in Scale Pitches (CHROMATIC)",
+                description: "Play samples with changing pitches as a chromatic scale: Select sample. Hold [SHIFT] + pad [4]. Unit enters chromatic mode. Pads [1-16] correspond to keys. Turn [VALUE] knob to change key range. Press [REMAIN] to change play mode (LEGATO, MONO, POLY).",
+                source: "Reference Manual p.23"
+            },
+            {
+                category: "sampling",
+                title: "Muting Playback of a Sample (Pad MUTE)",
+                description: "Momentarily mute a sample: Play sample. Hold [SHIFT] + [REVERSE] + pad (sample) to mute. Muted pads light red. Cannot mute patterns. Hold [SHIFT] + [REVERSE] + [REMAIN] to lock mute mode. Unmute by repeating operation or pressing [EXIT] 4 times.",
+                source: "Reference Manual p.24"
+            },
+            {
+                category: "sampling",
+                title: "Playing Multiple Pads at Same Time (PAD LINK GROUPS)",
+                description: "Group up to four pads to play simultaneously: Hold [SHIFT] + pad [7]. PAD LINK GROUPS screen appears. Turn [VALUE] knob to select group (A-J). Press pads [1-16] to select samples for group. Press [EXIT] to finish.",
+                source: "Reference Manual p.24"
+            },
+            {
+                category: "sampling",
+                title: "Merging Multiple Samples (SAMPLE MERGE)",
+                description: "Combine multiple samples into a single pad: Hold [SHIFT] + [RESAMPLE]. Select 1-4 samples to merge. Turn [CTRL 1] (SUM/MUL) and [CTRL 3] (volume) to configure. Select save destination pad and press [VALUE] knob.",
+                source: "Reference Manual p.24-25"
+            },
+            {
+                category: "sampling",
+                title: "Preventing Samples from Playing Simultaneously (MUTE GROUP)",
+                description: "Group samples that should not layer: Hold [SHIFT] + pad [8]. MUTE GROUP screen appears. Turn [VALUE] knob to select group (A-J). Press pads [1-16] to select samples for group. Only the last played sample in a group is heard.",
+                source: "Reference Manual p.25"
+            },
+            {
+                category: "sampling",
+                title: "Stopping All Sample Playback (STOP)",
+                description: "Stop all currently playing samples and patterns: Press [EXIT] button quickly four times. Alternatively, hold [SHIFT] + [EXIT].",
+                source: "Reference Manual p.26"
+            },
+            {
+                category: "sampling",
+                title: "Pausing the Sound of a Sample (PAUSE)",
+                description: "Pause currently playing sample: Hold [SHIFT] + [HOLD] button. All playing samples pause. Repeat to resume playback.",
+                source: "Reference Manual p.26"
+            },
+            {
+                category: "sampling",
+                title: "Disabling Buttons in Live Mode",
+                description: "Disable sampling/editing buttons during live performance: Hold [SHIFT] + long-press [REMAIN] (3 seconds). 'LIVE MODE ON' appears. Disabled buttons: [DEL], [REC], [RESAMPLE], [COPY], [MARK]. Repeat to turn off.",
+                source: "Reference Manual p.26"
+            },
+
+            // --- EFFECTS ---
+            {
+                category: "effects",
+                title: "Applying BUS FX to Samples",
+                description: "Assign effects to BUS 1/2: Press [BUS FX] to select bus (orange for BUS 1, blinking orange for BUS 2), then press an effect button (e.g., [FILTER+DRIVE]). Use [CTRL] knobs to edit parameters.",
+                source: "Reference Manual p.27-28"
+            },
+            {
+                category: "effects",
+                title: "Assigning Effects Per Sample",
+                description: "Apply effects to specific samples: Select BUS (1/2) with [BUS FX], then hold [REMAIN] + sample pad. Pad color indicates bus assignment (orange=BUS 1, green=BUS 2, white=DRY).",
+                source: "Reference Manual p.29"
+            },
+            {
+                category: "effects",
+                title: "Using MFX Effects",
+                description: "Select MFX: Hold [MFX] + turn [VALUE] or [CTRL 3] knob. Release [MFX] to activate. Use [DJFX LOOPER] or [ISOLATOR] (while holding [MFX]) for more MFX types. Edit parameters with [CTRL] knobs.",
+                source: "Reference Manual p.29"
+            },
+            {
+                category: "effects",
+                title: "Editing Effect Parameters",
+                description: "When an effect is on, the edit screen appears. Use [CTRL 1-3] for main parameters. Hold [VALUE] + [CTRL 1-3] for sub-parameters. Lock screen: Hold [REMAIN] + effect button.",
+                source: "Reference Manual p.30"
+            },
+            {
+                category: "effects",
+                title: "Effect Grab (Momentary Effects)",
+                description: "Apply effects temporarily: Play a sample, then while holding [VALUE] knob, press an effect button. Effect is active only while the button is held.",
+                source: "Reference Manual p.31"
+            },
+            {
+                category: "effects",
+                title: "MUTE BUS for Breaks",
+                description: "Output only effect sound (e.g., reverb/delay tail): Play a sample, then hold [SHIFT] + [BUS FX]. Original audio is silenced, leaving only the effect. Press again to turn off.",
+                source: "Reference Manual p.31"
+            },
+            {
+                category: "effects",
+                title: "Configuring Effect Routing",
+                description: "Change how effects are chained (BUS FX Type A/B): UTILITY MENU > EFX SET > FAVORITE tab. Use [VALUE] knob to select Routing TYPE A/B. This changes the order of BUS 1 and BUS 2.",
+                source: "Reference Manual p.104"
+            },
+            {
+                category: "effects",
+                title: "Adding Effects to Overall Sound (BUS 3, BUS 4)",
+                description: "Apply effects to the master output: UTILITY MENU > EFX SET > FAVORITE tab. Turn [VALUE] knob to select FAVORITE 1-16. These combinations are applied to BUS 3 and BUS 4.",
+                source: "Reference Manual p.104-105"
+            },
+            {
+                category: "effects",
+                title: "Changing BUS 3/4 Effects",
+                description: "Select specific effects for BUS 3/4: UTILITY MENU > EFX SET > BUS 3 or BUS 4 tab. Use [VALUE] knob to select 'EFX Type'. Edit parameters with [CTRL] knobs.",
+                source: "Reference Manual p.105-106"
+            },
+            {
+                category: "effects",
+                title: "Assigning Effects to Direct FX Buttons",
+                description: "Customize which effect is assigned to the physical effect buttons on the top panel: UTILITY MENU > EFX SET > DIRECT tab. Select 'Direct FX1-5' and choose your desired effect.",
+                source: "Reference Manual p.107-108"
+            },
+            {
+                category: "effects",
+                title: "Configuring Input Effects (INPUT FX)",
+                description: "Apply effects to audio coming into the input jacks: UTILITY MENU > EFX SET > OTHER tab. Select 'Input FX' and choose an effect. Note: Some effects are INPUT FX only.",
+                source: "Reference Manual p.108-109"
+            },
+            {
+                category: "effects",
+                title: "Sending Input Audio to a Bus",
+                description: "Route external audio input to BUS 1 or BUS 2 for effects processing: UTILITY MENU > EFX SET > OTHER tab. Select 'Input Bus' and choose 'BUS1' or 'BUS2' (or 'DRY' for no effects).",
+                source: "Reference Manual p.109-110"
+            },
+
+            // --- PATTERNS ---
+            {
+                category: "patterns",
+                title: "Playing a Pattern",
+                description: "Recall and play patterns: Press [PATTERN SELECT]. Pads with patterns light up purple. Press a pad to play. Press another pad to queue next pattern. Press playing pad or [EXIT] to stop.",
+                source: "Reference Manual p.58"
+            },
+            {
+                category: "patterns",
+                title: "Real-Time Pattern Recording",
+                description: "Record performances as patterns: Press [PATTERN SELECT], then [REC]. Select blinking red pad. Set 'REC MODE' to 'Real-Time' ([REMAIN]). Set BPM, LENGTH, STRENGTH, QTZ. Press [REC] to start. [EXIT] twice to stop/save.",
+                source: "Reference Manual p.58-60"
+            },
+            {
+                category: "patterns",
+                title: "TR-REC Pattern Creation",
+                description: "Create step-based patterns (ideal for drums): Press [PATTERN SELECT], then [REC]. Select blinking red pad. Set 'REC MODE' to 'TR-REC' ([REMAIN]). Use [SUB PAD] + sample pad to select, then pads [1-16] for notes on steps.",
+                source: "Reference Manual p.60-62"
+            },
+            {
+                category: "patterns",
+                title: "Editing Patterns with Microscope",
+                description: "Edit individual notes within a pattern: Start TR-REC recording, select sample with [SUB PAD] + pads. Hold [PATTERN EDIT] + note pad. Microscope screen appears; adjust ITEM, PITCH, VELOCITY with [CTRL] knobs.",
+                source: "Reference Manual p.64"
+            },
+            {
+                category: "patterns",
+                title: "Tap Recording in TR-REC",
+                description: "Record notes by tapping in TR-REC mode: Start TR-REC. Select sample. Press [REC] at desired timing to record notes. Quantization settings apply.",
+                source: "Reference Manual p.64-65"
+            },
+            {
+                category: "patterns",
+                title: "Converting Patterns to Samples (Resample)",
+                description: "Convert a pattern (with effects) into a sample: Press [PATTERN SELECT], then [RESAMPLE]. Set ROUTING to 'Mix'. Select blinking red pad. Press pattern pad to start. Press [REC] to stop/save.",
+                source: "Reference Manual p.65-66"
+            },
+            {
+                category: "patterns",
+                title: "Converting Patterns to Samples (Bounce)",
+                description: "Convert a pattern (without effects) into a sample: Select pattern to convert. Press [COPY], then [PATTERN SELECT]. Select destination pad. Press [VALUE] or [COPY] to confirm. Overwrites destination.",
+                source: "Reference Manual p.66-67"
+            },
+            {
+                category: "patterns",
+                title: "Selecting a Pattern Bank",
+                description: "Switch between 10 available pattern banks (A-J): Press the bank [A/F]-[E/J] buttons. Button lights for A-E, blinks for F-J.",
+                source: "Reference Manual p.67"
+            },
+            {
+                category: "patterns",
+                title: "Pattern Chain Creation",
+                description: "Sequence patterns to play in order: Press [PATTERN SELECT]. Hold [HOLD] + pad [1-16] to select chain number. Press pads [1-16] to select patterns for the chain. Press [EXIT] to save.",
+                source: "Reference Manual p.67-68"
+            },
+            {
+                category: "patterns",
+                title: "Playing a Pattern Chain",
+                description: "Play a created pattern chain: Press [PATTERN SELECT]. Hold [HOLD] + pad [1-16] to select chain number. Press [SUB PAD] to play. Press [SUB PAD] again to stop. [EXIT] to exit chain mode.",
+                source: "Reference Manual p.68"
+            },
+            {
+                category: "patterns",
+                title: "Recording Effect Operations (EFX MOTION REC)",
+                description: "Automate effect changes within a pattern: Play a pattern. Press [REC], then [MARK]. Operate effects as pattern plays; changes are recorded. Press [EXIT] to finish. Toggle playback with [START/END].",
+                source: "Reference Manual p.70"
+            },
+            {
+                category: "patterns",
+                title: "Deleting EFX Motion from Pattern",
+                description: "Delete all recorded effect automation: Press [PATTERN SELECT], [PATTERN EDIT]. Select pattern. Hold [DEL] + [MARK]. 'Operation Completed!' appears.",
+                source: "Reference Manual p.71"
+            },
+            {
+                category: "patterns",
+                title: "Deleting Specific EFX Motion",
+                description: "Delete effect automation within a specific range: Play pattern. Press [REC]. Hold [SHIFT] + [MARK] at start of range ('MOTION ERASE ON'). Hold [SHIFT] + [MARK] again at end of range ('MOTION ERASE OFF'). Press [EXIT].",
+                source: "Reference Manual p.71"
+            },
+            {
+                category: "patterns",
+                title: "Recording Pad Mute Operations",
+                description: "Automate pad mute states in a pattern: Play pattern. Press [REC]. Hold [SHIFT] + [REVERSE] + [REMAIN] ('PAD MUTE MODE'). Mute/unmute pads as pattern plays. Press [EXIT] to finish.",
+                source: "Reference Manual p.71-72"
+            },
+            {
+                category: "patterns",
+                title: "Deleting Pad Mute Operations",
+                description: "Delete all recorded pad mute automation: Press [PATTERN SELECT], [PATTERN EDIT]. Select pattern. Hold [DEL] + [REVERSE]. 'Operation Completed!' appears.",
+                source: "Reference Manual p.72"
+            },
+            {
+                category: "patterns",
+                title: "Deleting Specific Pad Mute Operations",
+                description: "Delete pad mute automation for specific pads/ranges: Enter PAD MUTE MOTION REC. Press [DEL] ('PAD MUTE MODE (Motion ERASE)'). Press pads with automation to delete. Press [DEL] again to return to recording.",
+                source: "Reference Manual p.72"
+            },
+            {
+                category: "patterns",
+                title: "Recording a Roll in Pattern",
+                description: "Record notes that simulate a roll into a pattern: Start real-time recording. Hold [ROLL] + pads [1-16] to play the roll. Can also hold a pad and press [ROLL].",
+                source: "Reference Manual p.73"
+            },
+            {
+                category: "patterns",
+                title: "Editing Pattern Length & Loop Range",
+                description: "Change pattern length or playback range: Press [PATTERN SELECT], [PATTERN EDIT]. Select pattern. Use [CTRL 2] for LOOP START, [CTRL 3] for LENGTH. [DEL] to delete patterns within loop range.",
+                source: "Reference Manual p.73"
+            },
+            {
+                category: "patterns",
+                title: "Copying & Connecting Patterns (DUPLICATE)",
+                description: "Copy a pattern and append it to the current pattern, doubling its length: Press [PATTERN SELECT], [PATTERN EDIT]. Select pattern. Press [VALUE] knob, select 'DUPLICATE'.",
+                source: "Reference Manual p.73-74"
+            },
+            {
+                category: "patterns",
+                title: "Cropping Unnecessary Pattern Sections",
+                description: "Delete all sections from a pattern except the selected range: Set the playback range using LOOP START and LENGTH. Press [VALUE] knob, select 'CROP'.",
+                source: "Reference Manual p.74"
+            },
+            {
+                category: "patterns",
+                title: "Quantizing Pattern Notes",
+                description: "Correct timing inconsistencies in real-time recorded patterns: Press [PATTERN SELECT], [PATTERN EDIT]. Select pattern. Press [RECORD SETTING]. Use [CTRL 2] for QTZ type (GRID/SHUFFLE) and [CTRL 3] for STRENGTH. Press [VALUE] and 'OK' to apply.",
+                source: "Reference Manual p.74-76"
+            },
+            {
+                category: "patterns",
+                title: "Exchanging Patterns Between Pads",
+                description: "Swap patterns between two pads: Hold [SHIFT] + pad [5] (EXCHANGE screen). Select the two pads. Press [VALUE] or [COPY] to confirm. Can exchange across banks.",
+                source: "Reference Manual p.77"
+            },
+            {
+                category: "patterns",
+                title: "Copying a Pattern to Another Pad",
+                description: "Copy a pattern from one pad to another: Press [COPY]. Select source pattern, then destination pattern. Press [VALUE] or [COPY] to confirm. Overwrites destination. Can copy across banks/projects.",
+                source: "Reference Manual p.77"
+            },
+            {
+                category: "patterns",
+                title: "Extracting Specific Samples from Pattern",
+                description: "Create a new pattern using only specific samples from an existing multi-sample pattern: Copy the source pattern to a destination. Press [REMAIN]. Pads used by pattern light dimly. Press pads to select/deselect samples to extract. Press [REMAIN] again, then [VALUE]/[COPY].",
+                source: "Reference Manual p.78"
+            },
+            {
+                category: "patterns",
+                title: "Copying All Patterns in a Bank",
+                description: "Copy all patterns from one bank to another: Hold [COPY] + [EXIT] (COPY BANK screen). Select source bank, then destination bank. Press [VALUE] or [COPY] to confirm. Overwrites destination bank.",
+                source: "Reference Manual p.78-79"
+            },
+            {
+                category: "patterns",
+                title: "Protecting Patterns",
+                description: "Prevent patterns from accidental copy, overwrite, or deletion: Select bank(s) to protect. Hold [SHIFT] + [COPY]. Confirm 'OK'. Protection is bank-based.",
+                source: "Reference Manual p.79"
+            },
+            {
+                category: "patterns",
+                title: "Deleting a Pattern from a Pad",
+                description: "Delete a pattern: Press [DEL]. Select the pad containing the pattern. Press [VALUE] or [DEL] to confirm. Cannot be restored.",
+                source: "Reference Manual p.79"
+            },
+            {
+                category: "patterns",
+                title: "Deleting All Patterns in a Bank",
+                description: "Delete all patterns in a bank: Hold [DEL] + [EXIT] (DELETE BANK screen). Select the bank to delete. Press [VALUE] or [DEL] to confirm. Cannot be restored.",
+                source: "Reference Manual p.80"
+            },
+
+            // --- TEMPO ---
+            {
+                category: "tempo",
+                title: "Understanding Tempo Data (Sample, Bank, Project)",
+                description: "Sample Tempo: Individual sample BPM. Bank Tempo: Common BPM for all samples/patterns in a bank. Project Tempo: Common BPM for all samples/patterns in a project. Tempo priority depends on TEMPO SEL parameter.",
+                source: "Reference Manual p.81"
+            },
+            {
+                category: "tempo",
+                title: "Setting Sample Tempo (AUTO Mode)",
+                description: "Detect and set sample BPM automatically: Press [PITCH/SPEED]. Select sample. Set 'BPM SET' to 'AUTO' ([VALUE] knob). Choose BPM RANGE. Press [VALUE] for 'OK'.",
+                source: "Reference Manual p.81-82"
+            },
+            {
+                category: "tempo",
+                title: "Setting Sample Tempo (MANUAL Mode)",
+                description: "Manually set sample BPM: Press [PITCH/SPEED]. Select sample. Set 'BPM SET' to 'MANU' (0.1 decimal) or 'MANU-F' (0.01 decimal) with [VALUE] knob. Adjust BPM with [VALUE] knob.",
+                source: "Reference Manual p.82-83"
+            },
+            {
+                category: "tempo",
+                title: "Setting Bank or Project Tempo",
+                description: "Set the base tempo for BPM SYNC or pattern playback: Hold [SHIFT] + pad [11] (TEMPO SEL screen). Use [CTRL 1] to select 'PROJECT' or 'BANK A-J'. Use [VALUE] knob to set tempo.",
+                source: "Reference Manual p.83"
+            },
+            {
+                category: "tempo",
+                title: "Tap Tempo Function",
+                description: "Set tempo intuitively by tapping: Hold [SHIFT] + pad [11]. Tap [SUB PAD] button several times in time with the beat. Press [EXIT] to confirm and set tempo for project/bank.",
+                source: "Reference Manual p.83-84"
+            },
+
+            // --- DJ MODE ---
+            {
+                category: "djmode",
+                title: "Entering DJ MIXER Mode",
+                description: "Access DJ mixing: Press bank [D/I] + [E/J] simultaneously. This mode allows free mixing of two samples assigned to CH1 and CH2.",
+                source: "Reference Manual p.85"
+            },
+            {
+                category: "djmode",
+                title: "Assigning Samples in DJ Mode",
+                description: "Assign samples to CH1/CH2: In DJ MIXER mode, press [VALUE] knob. Select 'CH1 SELECT' or 'CH2 SELECT'. Press pads [1-16] to choose sample. Press [VALUE] for 'ENTER'.",
+                source: "Reference Manual p.85"
+            },
+            {
+                category: "djmode",
+                title: "Mixing Controls in DJ Mode",
+                description: "Mix CH1/CH2: [CTRL 1] for CH1 LEVEL, [CTRL 2] for CH2 LEVEL. [CTRL 3] for CUE MIX (headphones monitor balance) or X-FADE (crossfader). Toggle [CTRL 3] function with [START/END].",
+                source: "Reference Manual p.85-86"
+            },
+            {
+                category: "djmode",
+                title: "Playback & Sync in DJ Mode",
+                description: "Play/Pause: Pad [13] (CH1) / Pad [15] (CH2). Return to start: Pad [9] (CH1) / Pad [11] (CH2). SYNC tempos: Pad [10] (CH1 follows CH2) or Pad [12] (CH2 follows CH1).",
+                source: "Reference Manual p.86"
+            },
+            {
+                category: "djmode",
+                title: "Tempo & Pitch Bend in DJ Mode",
+                description: "Tempo Increase/Decrease: Pad [2]/[6] (CH1) / Pad [4]/[8] (CH2). Reset Tempo: [DEL] + Pad [2] + Pad [6] (CH1) / [DEL] + Pad [4] + Pad [8] (CH2). Pitch Bend Up/Down: Pad [1]/[5] (CH1) / Pad [3]/[7] (CH2).",
+                source: "Reference Manual p.86"
+            },
+            {
+                category: "djmode",
+                title: "FX Bus & Reverse in DJ Mode",
+                description: "Set FX bus for CH1/CH2 sample playback: [REMAIN] + Pad [14] (CH1) / Pad [16] (CH2) to cycle BUS-1/BUS-2/DRY. Reverse playback: [REVERSE] button (starts immediately from current position).",
+                source: "Reference Manual p.86-87"
+            },
+            {
+                category: "djmode",
+                title: "Volume Curve Characteristics (DJ Mode)",
+                description: "Select volume curve for sliders (CH1/CH2 LEVEL, X-FADE): Press [RESAMPLE] + [VALUE] knob. Cycle through FAST CUT, LINEAR, SQUARE, CUBIC.",
+                source: "Reference Manual p.87"
+            },
+            {
+                category: "djmode",
+                title: "Pad Mode in DJ Mode",
+                description: "Temporarily change pad arrangement to Sample Mode while retaining DJ functions: Press [HOLD] button. Play samples assigned to pads. Blinking orange pads are used in DJ mode and cannot be played.",
+                source: "Reference Manual p.87"
+            },
+            {
+                category: "djmode",
+                title: "Playing Patterns in DJ Mode",
+                description: "Play patterns you created while in DJ mode: Press [PATTERN SELECT]. Select pattern. Press [PATTERN SELECT] again. Press pad [13] to play. Mix with [CTRL] knobs.",
+                source: "Reference Manual p.87-88"
+            },
+            {
+                category: "djmode",
+                title: "Playing Samples from Markers in DJ Mode",
+                description: "Play a sample from a specific marker position: Play sample (pad 13/15), then hold [SHIFT] + pads [1-16] (corresponding to markers 1-7). Playback begins immediately.",
+                source: "Reference Manual p.88"
+            },
+            {
+                category: "djmode",
+                title: "Adding Markers in DJ Mode",
+                description: "Add markers on the fly: Play sample. Hold [SHIFT] + [MARK] button at desired position. Up to seven markers can be added.",
+                source: "Reference Manual p.88"
+            },
+            {
+                category: "djmode",
+                title: "Editing Markers in DJ Mode",
+                description: "Edit markers while playing samples: Play sample. Hold [SHIFT] + [START/END]. Use [CTRL] knobs to move cursor/marker, zoom. [DEL] to delete marker. [RESAMPLE] for zero-cross snap.",
+                source: "Reference Manual p.89"
+            },
+            {
+                category: "djmode",
+                title: "Deleting All Markers from Sample (DJ Mode)",
+                description: "Delete all markers set for a sample: Hold [SHIFT] + [DEL] + pads [1-16] (select marker to delete). Markers 1-7 are recognized. Deleting moves subsequent markers back.",
+                source: "Reference Manual p.89-90"
+            },
+            {
+                category: "djmode",
+                title: "Editing Samples in DJ Mode",
+                description: "Edit samples used in DJ mode: Press [VALUE] knob (menu). Select 'CH1 EDIT' or 'CH2 EDIT'. Sample edit screen appears (same as Sample Mode edit).",
+                source: "Reference Manual p.90"
+            },
+            {
+                category: "djmode",
+                title: "Importing Samples from DJ Mode to SD Card",
+                description: "Import samples saved in DJ mode to SD card: Enter DJ MIXER mode. Press [VALUE] knob. Select 'IMPORT SAMPLE'. Choose sample, then destination pad. Press [VALUE].",
+                source: "Reference Manual p.91"
+            },
+            {
+                category: "djmode",
+                title: "Monitoring with Headphones (CUE)",
+                description: "Adjust headphone output balance: Hold [SHIFT] + pad [3]. Use [CTRL 3] knob to adjust balance ('C' for CUE, 'M' for Master/LINE OUT). Only player hears CUE audio.",
+                source: "Reference Manual p.92"
+            },
+
+            // --- SHORTCUTS ---
+            {
+                category: "shortcuts",
+                title: "Fixed Velocity (SHIFT + Pad 1)",
+                description: "Set sample velocity to max (127): Hold [SHIFT] + Pad [1].",
+                source: "Shortcut Keys p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "16 Velocity (SHIFT + Pad 2)",
+                description: "Change sample volume in steps: Hold [SHIFT] + Pad [2].",
+                source: "Shortcut Keys p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Chromatic Mode (SHIFT + Pad 4)",
+                description: "Play samples chromatically: Hold [SHIFT] + Pad [4].",
+                source: "Shortcut Keys p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Exchange Samples/Patterns (SHIFT + Pad 5)",
+                description: "Swap data between pads: Hold [SHIFT] + Pad [5].",
+                source: "Shortcut Keys p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Initialize Sample Parameters (SHIFT + Pad 6)",
+                description: "Reset sample parameters: Hold [SHIFT] + Pad [6].",
+                source: "Shortcut Keys p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Pad Link Groups (SHIFT + Pad 7)",
+                description: "Group pads for simultaneous playback: Hold [SHIFT] + Pad [7].",
+                source: "Shortcut Keys p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Mute Group (SHIFT + Pad 8)",
+                description: "Group samples to prevent layering: Hold [SHIFT] + Pad [8].",
+                source: "Shortcut Keys p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Metronome On/Off (SHIFT + Pad 9)",
+                description: "Toggle metronome: Hold [SHIFT] + Pad [9].",
+                source: "Shortcut Keys p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Count-In for Recording (SHIFT + Pad 10)",
+                description: "Add a recording count-in: Hold [SHIFT] + Pad [10].",
+                source: "Shortcut Keys p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Tap Tempo (SHIFT + Pad 11)",
+                description: "Set tempo by tapping: Hold [SHIFT] + Pad [11].",
+                source: "Shortcut Keys p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Utility Menu (SHIFT + Pad 13)",
+                description: "Open Utility Menu: Hold [SHIFT] + Pad [13].",
+                source: "Shortcut Keys p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Import/Export Menu (SHIFT + Pad 14)",
+                description: "Open Import/Export Menu: Hold [SHIFT] + Pad [14].",
+                source: "Shortcut Keys p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Pad Setting Menu (SHIFT + Pad 15)",
+                description: "Open Pad Setting Menu: Hold [SHIFT] + Pad [15].",
+                source: "Shortcut Keys p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "EFX Setting Menu (SHIFT + Pad 16)",
+                description: "Open EFX Setting Menu: Hold [SHIFT] + Pad [16].",
+                source: "Shortcut Keys p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Mute Bus (SHIFT + BUS FX)",
+                description: "Temporarily output only effect sound: Hold [SHIFT] + [BUS FX].",
+                source: "Shortcut Keys p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Pause Playback (SHIFT + HOLD)",
+                description: "Pause current sample playback: Hold [SHIFT] + [HOLD].",
+                source: "Shortcut Keys p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Input Setting Screen (SHIFT + EXT SOURCE)",
+                description: "Display input settings: Hold [SHIFT] + [EXT SOURCE].",
+                source: "Shortcut Keys p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Select Project Screen (SHIFT + SUB PAD)",
+                description: "Display project selection: Hold [SHIFT] + [SUB PAD].",
+                source: "Shortcut Keys p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Save EFX Parameter (SHIFT + MARK, 3s)",
+                description: "Save BUS 1/2 effect parameters: Hold [SHIFT] + long-press [MARK] (3s).",
+                source: "Shortcut Keys p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Envelope Settings (SHIFT + PITCH/SPEED)",
+                description: "Adjust sample volume changes: Hold [SHIFT] + [PITCH/SPEED].",
+                source: "Shortcut Keys p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Chop Sample (SHIFT + START/END)",
+                description: "Split sample at markers and assign to pads: Hold [SHIFT] + [START/END].",
+                source: "Shortcut Keys p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Undo Pattern Recording (SHIFT + PATTERN SELECT)",
+                description: "Undo last recorded pattern data (during recording only): Hold [SHIFT] + [PATTERN SELECT].",
+                source: "Shortcut Keys p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Roll Set (SHIFT + ROLL)",
+                description: "Set roll interval: Hold [SHIFT] + [ROLL].",
+                source: "Shortcut Keys p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Pad Mute (SHIFT + REVERSE + REMAIN)",
+                description: "Keeps [SHIFT] and [REVERSE] in pressed state for easier muting/unmuting. Press [EXIT] to cancel.",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "Turn Off Automation (SHIFT + REVERSE)",
+                description: "Turn off automation: Hold [SHIFT] + [REVERSE].",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "Mute Samples (SHIFT + REVERSE)",
+                description: "Mute samples: Hold [SHIFT] + [REVERSE].",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "Pause Samples (SHIFT + HOLD)",
+                description: "Pause samples: Hold [SHIFT] + [HOLD].",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "Lock Live Play (SHIFT + REMAIN, 3s)",
+                description: "Disable Delete, Record, Resample, Copy, and Mark buttons: Hold [SHIFT] + [REMAIN] for 3 seconds. Hold again to unlock.",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "Mute BUS 3/4 (VALUE Knob + BUS FX)",
+                description: "Temporarily turn off BUS FX 3/4: Push and hold [VALUE] knob + [BUS FX].",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "Protect Sample (SHIFT + COPY)",
+                description: "Prevent sample from being copied, overwritten, or deleted: Hold [SHIFT] + [COPY].",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "Select Pattern Without Play (VALUE Knob + Pad)",
+                description: "Select a pattern without immediate playback: [VALUE] knob + Pad.",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "Load Projects (SHIFT + SUB PAD)",
+                description: "Load projects: Hold [SHIFT] + [SUB PAD].",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "Change Bank Volume (SHIFT + BANK)",
+                description: "Adjust volume for all banks: Hold [SHIFT] + [BANK].",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "DJ Mode Cue Points (SHIFT + HOLD)",
+                description: "Reach cue points in DJ Mode: Hold [SHIFT].",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "Realtime Cues (DJ Mode) (SHIFT + MARK)",
+                description: "Add realtime cues in DJ Mode: Hold [SHIFT] + [MARK].",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "Delete Cues (DJ Mode) (SHIFT + DELETE + Pad)",
+                description: "Delete cues in DJ Mode: Hold [SHIFT] + [DELETE] + Pad to delete.",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "Audio Editor (DJ Mode) (SHIFT + START/END)",
+                description: "Open Audio Editor in DJ Mode: Hold [SHIFT] + [START/END].",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "Motion Recording (Effects) (REC + MARK)",
+                description: "Record effect operations to a pattern: Press [REC] + [MARK]. Press [START/END] to end.",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "Delete Motion Recording (SHIFT + MARK)",
+                description: "Delete recorded effect automation: Hold [SHIFT] + [MARK].",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "BPM Sync Bank (SHIFT + BPM SYNC)",
+                description: "Synchronize BPM across banks: Hold [SHIFT] + [BPM SYNC].",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "Gate Off/On by Bank (SHIFT + GATE)",
+                description: "Toggle Gate function for all samples in a bank: Hold [SHIFT] + [GATE].",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "Roll Interval (SHIFT + ROLL)",
+                description: "Set roll interval: Hold [SHIFT] + [ROLL].",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "Stop All Playback (SHIFT + EXIT)",
+                description: "Stop all samples/patterns: Hold [SHIFT] + [EXIT].",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "TR-REC Mode (SHIFT + REC)",
+                description: "Enter TR-REC recording mode: Hold [SHIFT] + [REC].",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "Delete Automation (DELETE + Pad)",
+                description: "Delete automation for a specific pad: [DELETE] + Pad.",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "Select Sound (VALUE Knob + GATE)",
+                description: "Select a sound: Press/Hold [VALUE] knob + [GATE].",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "Copy Entire Bank (COPY + EXIT)",
+                description: "Copy all samples/patterns in a bank: [COPY] + [EXIT].",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "Stop Sample Playback (EXIT + Pad)",
+                description: "Stop sample playback: [EXIT] + Pad.",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "Continued Sample Play (Pad + HOLD)",
+                description: "Continue sample playback after releasing pad: Pad + [HOLD].",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "Set Sample FX Bus (REMAIN + Pad)",
+                description: "Set FX bus for a sample: Hold [REMAIN] + Pad. Orange = BUS 1, Green = BUS 2, White = DRY.",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "MFX Page 1 Select (Pads 1-16)",
+                description: "Select MFX effects on Page 1: Pads [1-16].",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "MFX Page 2 Select (MFX + DJ LOOPER + Pad)",
+                description: "Select MFX effects on Page 2: Hold [MFX] + [DJ LOOPER] + Pad.",
+                source: "Cheat Sheet p.1"
+            },
+            {
+                category: "shortcuts",
+                title: "END SNAP (Recording) (REC + START/END)",
+                description: "Enable END SNAP during recording: [REC] then press [START/END].",
+                source: "Cheat Sheet p.2"
+            },
+            {
+                category: "shortcuts",
+                title: "Sample Mode: Delete Start/End Points (START/END)",
+                description: "Delete start/end points in Sample Mode: [START/END].",
+                source: "Cheat Sheet p.2"
+            },
+            {
+                category: "shortcuts",
+                title: "Sample Mode: Prevent Start Point Move (REMAIN)",
+                description: "Prevent start point from moving beyond loop/end point in Sample Mode: [REMAIN].",
+                source: "Cheat Sheet p.2"
+            },
+            {
+                category: "shortcuts",
+                title: "Sample Mode: Loop Point/Slice (MARK)",
+                description: "Set loop point or slice in Sample Mode: [MARK].",
+                source: "Cheat Sheet p.2"
+            },
+            {
+                category: "shortcuts",
+                title: "Sample Mode: End Preview of Loop (ROLL)",
+                description: "Preview end of loop in Sample Mode: [ROLL].",
+                source: "Cheat Sheet p.2"
+            },
+            {
+                category: "shortcuts",
+                title: "Sample Mode: Zero Cross Point (RESAMPLE)",
+                description: "Move to nearest zero cross point in Sample Mode: [RESAMPLE].",
+                source: "Cheat Sheet p.2"
+            },
+            {
+                category: "shortcuts",
+                title: "Record Motion Information (TR-REC) (ROLL + Knob 1/2/3)",
+                description: "Record motion information in TR-REC mode: [ROLL] + [CTRL 1/2/3] knobs.",
+                source: "Cheat Sheet p.2"
+            },
+            {
+                category: "shortcuts",
+                title: "Select Sample No Playback (VALUE Knob + SUB PAD + Pad)",
+                description: "Select a sample without playing it back: [VALUE] knob + [SUB PAD] + Pad.",
+                source: "Cheat Sheet p.2"
+            },
+            {
+                category: "shortcuts",
+                title: "Bouncing Samples (COPY + PATTERN SELECT)",
+                description: "Convert pattern to sample without FX: Choose Pattern -> [COPY] -> [PATTERN SELECT].",
+                source: "Cheat Sheet p.2"
+            },
+            {
+                category: "shortcuts",
+                title: "Resampling with FX (RESAMPLE)",
+                description: "Convert pattern to sample with FX: [RESAMPLE].",
+                source: "Cheat Sheet p.2"
+            },
+            {
+                category: "shortcuts",
+                title: "Pattern Auto Playback (HOLD SUB PAD + Pattern Pad)",
+                description: "Enable pattern auto playback: Hold [SUB PAD] + (Desired Pattern Pad).",
+                source: "Cheat Sheet p.2"
+            },
+            {
+                category: "shortcuts",
+                title: "Pattern Chaining (HOLD in Pattern Mode)",
+                description: "Enter pattern chaining mode: Press [HOLD] while in Pattern Mode.",
+                source: "Cheat Sheet p.2"
+            },
+            {
+                category: "shortcuts",
+                title: "DJ Mode Entry (Bank D/I + E/J)",
+                description: "Enter DJ Mode: Press Bank [D/I] + [E/J].",
+                source: "Cheat Sheet p.2"
+            },
+            {
+                category: "shortcuts",
+                title: "Create Stems (Bounce to Pad) (COPY + PATTERN SELECT + Pad + COPY)",
+                description: "Bounce a pattern to a stem on a pad: Choose Pattern -> [COPY] -> [PATTERN SELECT] -> Choose Pad -> [COPY].",
+                source: "Cheat Sheet p.2"
+            },
+            {
+                category: "shortcuts",
+                title: "Choose Sounds to Bounce to Stem (COPY + PATTERN SELECT + REMAIN)",
+                description: "Select specific sounds to bounce to a stem: Choose Pattern -> [COPY] -> [PATTERN SELECT] -> [REMAIN].",
+                source: "Cheat Sheet p.2"
+            },
+            {
+                category: "shortcuts",
+                title: "One Shot Playback (VALUE Knob + GATE)",
+                description: "Enable one-shot playback: Select Sound -> Press/Hold [VALUE] knob + [GATE].",
+                source: "Cheat Sheet p.2"
+            },
+            {
+                category: "shortcuts",
+                title: "Add Cue Points (Chop Menu/MARK Button)",
+                description: "Add cue points from the Chop Menu (also labeled MARKS) or by pressing the [MARK] button.",
+                source: "Cheat Sheet p.2"
+            },
+            {
+                category: "shortcuts",
+                title: "Fine BPM Adjustment (PITCH/SPEED + VALUE Knob)",
+                description: "Fine tune BPM: [PITCH/SPEED] -> Turn [VALUE] knob -> MANU F for adjustments.",
+                source: "Cheat Sheet p.2"
+            },
+            {
+                category: "shortcuts",
+                title: "Quantize Pattern (PATTERN SELECT + PATTERN EDIT + RECORD SETTING)",
+                description: "Quantize a pattern: [PATTERN SELECT] -> [PATTERN EDIT] -> Choose Pattern -> Press [RECORD SETTING] -> C2/C3 to adjust Quantize. Choose pads to quantize, click [VALUE] knob to select.",
+                source: "Cheat Sheet p.2"
+            },
+            {
+                category: "shortcuts",
+                title: "Live Play: Affect All Pads (HOLD COPY + Change Parameter)",
+                description: "Hold [COPY] and change SPEED, PITCH, VOLUME, PAN, BPM, BPM SYNC, GATE, LOOP, REVERSE to affect all pads.",
+                source: "Cheat Sheet p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Live Play: See Sample Info (HOLD RESAMPLE)",
+                description: "See sample info in Live Play: Hold [RESAMPLE].",
+                source: "Cheat Sheet p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Keep FX Screen Open (REMAIN + FX)",
+                description: "Keep FX screen open: [REMAIN] + [FX].",
+                source: "Cheat Sheet p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Effect Grab (VALUE Knob + FX Button)",
+                description: "Momentarily apply effects: Press/Hold [VALUE] knob + [FX] button.",
+                source: "Cheat Sheet p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Chromatic Mode: Change Play Mode (REMAIN)",
+                description: "Change play mode in Chromatic Mode: Press [REMAIN].",
+                source: "Cheat Sheet p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Chromatic Mode: Change Scales (Rotary Knob)",
+                description: "Change scales in Chromatic Mode: Turn Rotary Knob.",
+                source: "Cheat Sheet p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "TR-REC Mode: Delete Notes (Selected Pad) (DEL + A/F)",
+                description: "Delete notes for one measure on selected pad in TR-REC Mode: [DEL] + [A/F].",
+                source: "Cheat Sheet p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "TR-REC Mode: Delete Notes (All Pads) (DEL + B/G)",
+                description: "Delete notes for one measure on all pads in TR-REC Mode: [DEL] + [B/G].",
+                source: "Cheat Sheet p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Change FX Routing (SHIFT + Pad 16 + VALUE Knob)",
+                description: "Change FX routing: [SHIFT] + Pad [16] -> Push [VALUE] knob.",
+                source: "Cheat Sheet p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Change Skipback Sampling Time (SHIFT + Pad 13)",
+                description: "Change Skipback Sampling time to Long: [SHIFT] + Pad [13] ('SBS TIME').",
+                source: "Cheat Sheet p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Change Envelope on Gated Sample (SHIFT + PITCH/SPEED)",
+                description: "Change envelope on gated samples: [SHIFT] + [PITCH/SPEED] on gated samples.",
+                source: "Cheat Sheet p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "MIDI Sync External Gear (SHIFT + Pad 13)",
+                description: "MIDI Sync external gear: [SHIFT] + Pad [13] ('MIDI SYNC OUT').",
+                source: "Cheat Sheet p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Retrigger Samples with Loop On (HOLD + Pad)",
+                description: "Retrigger samples with loop on: [HOLD] + Pad.",
+                source: "Cheat Sheet p.3"
+            },
+            {
+                category: "shortcuts",
+                title: "Trigger Forward + Backward Play (SHIFT + LOOP)",
+                description: "Trigger forward + backward play: [SHIFT] + [LOOP].",
+                source: "Cheat Sheet p.3"
+            },
+
+            // --- UTILITY ---
+            {
+                category: "utility",
+                title: "System Settings",
+                description: "Configure global unit settings: Access via UTILITY MENU > SYSTEM (Pad 13 + SHIFT). Includes Edit Knob Mode, EFX Knob Mode, Load Project, Sub Pad Mode, Auto Trig Level, Screen Saver Time/Type, BPM Auto Detect, Pad MUTE, PTN Change Mode, Pop-up Time, MARK Function, Reverse Type, USB IN, DJ Mode TS type, Bend Sens (DJ), FileSystem, Bank Mute, App Auto Connection, Start-up Screen.",
+                source: "Reference Manual p.102, 121-122"
+            },
+            {
+                category: "utility",
+                title: "Pad Settings",
+                description: "Adjust pad-related settings (sensitivity, LED colors): Access via UTILITY MENU > PAD SET (Pad 15 + SHIFT). Includes Curve Type, Threshold, Gain, Trig Span (TRIGGER tab); LED Brightness, LED Glow, Pad LED Mode (LED tab); and pad colors (BUS COLOR, PAD COLOR tabs).",
+                source: "Reference Manual p.102-103, 125-126"
+            },
+            {
+                category: "utility",
+                title: "Effect Settings (EFX SET)",
+                description: "Edit effect routing and assignments: Access via UTILITY MENU > EFX SET (Pad 16 + SHIFT). Includes Routing TYPE, FAVORITE combinations, BUS 3/BUS 4 effects, Direct FX assignments, Input FX, Input Bus, DRY Routing, MFX TOP.",
+                source: "Reference Manual p.103-109, 126-128"
+            },
+            {
+                category: "utility",
+                title: "Renaming Files",
+                description: "Edit sample/project filenames: Hold [REMAIN] + turn [VALUE] to select 'PROJECT'/'NAME', then press [VALUE]. Use [VALUE] knob to select characters, [SHIFT] + [VALUE] clockwise for space, counter-clockwise to delete. Press [VALUE] at 'OK' to confirm.",
+                source: "Reference Manual p.110"
+            },
+            {
+                category: "utility",
+                title: "Importing Samples from SD Card",
+                description: "Import WAV/AIFF/MP3: Save to SD '/IMPORT' folder. Insert SD card. Go to UTILITY MENU > IMPORT > IMPORT from SD-CARD > SAMPLE. Select a pad and then the sample to import.",
+                source: "Reference Manual p.111-113"
+            },
+            {
+                category: "utility",
+                title: "Exporting Samples to SD Card",
+                description: "Export samples: Insert SD card. Go to UTILITY MENU > IMPORT > EXPORT to SD-CARD > SAMPLE. Select the samples (pads) to export and press [VALUE].",
+                source: "Reference Manual p.113-114"
+            },
+            {
+                category: "utility",
+                title: "Importing a Project from SD Card",
+                description: "Import a project from SD card: UTILITY MENU > IMPORT > IMPORT from SD-CARD > PROJECT. Select project number to import to. Select project from SD card. Overwrites destination.",
+                source: "Reference Manual p.114-115"
+            },
+            {
+                category: "utility",
+                title: "Importing Project from SP-404SX/A",
+                description: "Import projects from older SP-404 models: UTILITY MENU > IMPORT > IMPORT from SD-CARD > PROJECT(SX). Follow on-screen prompts for SD card setup.",
+                source: "Reference Manual p.115-116"
+            },
+            {
+                category: "utility",
+                title: "Exporting a Project to SD Card",
+                description: "Export projects: Insert SD card. Go to UTILITY MENU > IMPORT > EXPORT to SD-CARD > PROJECT. Select projects to export and press [VALUE].",
+                source: "Reference Manual p.116-117"
+            },
+            {
+                category: "utility",
+                title: "MultiPad Export (Pattern to Audio Stems)",
+                description: "Convert phrases recorded in a pattern to audio for individual pads (stems): UTILITY MENU > IMPORT > EXPORT to SD-CARD > MULTIPAD. Select pattern. Exports .WAV files to '/EXPORT' folder.",
+                source: "Reference Manual p.117"
+            },
+            {
+                category: "utility",
+                title: "Backing Up Data",
+                description: "Save all unit data to SD card: UTILITY MENU > BACKUP > BACKUP. Select a backup number (01-64) and press [VALUE]. Overwrites existing backup if number matches.",
+                source: "Reference Manual p.117-118"
+            },
+            {
+                category: "utility",
+                title: "Restoring from Backup",
+                description: "Restore unit data from SD card backup: UTILITY MENU > BACKUP > RESTORE. Select backup number. WARNING: Overwrites all current unit data. Confirm 'OK'.",
+                source: "Reference Manual p.118-119"
+            },
+            {
+                category: "utility",
+                title: "Formatting an SD Card",
+                description: "Initialize SD card for unit use: UTILITY MENU > IMPORT/EXPORT > FORMAT SD-CARD. Confirm 'OK'. WARNING: Deletes all data on card.",
+                source: "Reference Manual p.119"
+            },
+            {
+                category: "utility",
+                title: "Factory Reset",
+                description: "Restore unit to factory defaults: UTILITY MENU > FACTORY. Select 'ALL DATA' (samples/patterns/settings) or 'SYSTEM DATA' (settings only). WARNING: Data loss for 'ALL DATA'. Power cycle unit after reset.",
+                source: "Reference Manual p.119-120"
+            },
+
+            // --- KOALA SAMPLER ---
+            {
+                category: "koala",
+                title: "Connect Koala Sampler",
+                description: "Connect SP-404MK2 to mobile device via USB. Launch Koala Sampler app (v1.4082+). 'SP-404MKII CONNECTED' will display, and unit enters 'Koala Controller Mode'.",
+                source: "Koala Setup Guide p.4",
+                link: "https://www.koalasampler.com/learning/"
+            },
+            {
+                category: "koala",
+                title: "Koala Controller Mode Banks",
+                description: "In Koala Controller Mode, SP-404MK2 banks A-D control Koala Sampler banks A-D. Banks E-I allow SP-404MK2 to be used as its own sampler.",
+                source: "Koala Setup Guide p.6"
+            },
+            {
+                category: "koala",
+                title: "Koala Basic Controls",
+                description: "Control Koala Sampler: [EXT SOURCE] for audio input, Pads [1-16] play samples (blank pads start recording/sample selection). [DEL] deletes selected sample. [GATE] / [LOOP] / [REVERSE] set sample parameters.",
+                source: "Koala Setup Guide p.7"
+            },
+            {
+                category: "koala",
+                title: "Koala Page Navigation",
+                description: "Navigate Koala Sampler pages: [REMAIN] for [SAMPLE] page, [PATTERN SELECT] for [SEQUENCE] page, [ROLL] for [PERFORM] page, [START/END] for [EDIT (SAMPLE)] then [EDIT(MIX)] page, [PITCH/SPEED] for [PITCH/SPEED] page.",
+                source: "Koala Setup Guide p.7"
+            },
+            {
+                category: "koala",
+                title: "Koala PITCH/SPEED Page Adjustments",
+                description: "On Koala's [PITCH/SPEED] page: [CTRL 1] adjusts VOLUME, [CTRL 2] adjusts PITCH (-12 to +12 Semi), [CTRL 3] adjusts PAN (100:0-0:100).",
+                source: "Koala Setup Guide p.7"
+            },
+            {
+                category: "koala",
+                title: "Koala PITCH/SPEED Page SHIFT Controls",
+                description: "On Koala's [PITCH/SPEED] page: [SHIFT] + [CTRL 1] adjusts ATTACK, [SHIFT] + [CTRL 2] adjusts RELEASE, [SHIFT] + [CTRL 3] adjusts TONE.",
+                source: "Koala Setup Guide p.7"
+            },
+            {
+                category: "koala",
+                title: "Koala SHIFT Shortcuts",
+                description: "Key Koala shortcuts: [SHIFT] + pad [9] toggles Metronome, [SHIFT] + pad [11] shows BPM settings, [SHIFT] + pad [4] for Chromatic mode, [SHIFT] + pad [1] enables sample velocity.",
+                source: "Koala Setup Guide p.7"
+            },
+            {
+                category: "koala",
+                title: "Koala Recording & Import",
+                description: "Switch Koala modes: [REC] for Sampling mode, [RESAMPLE] for Resampling mode, [SHIFT] + [REC] for Sample Import mode. [MARK] for Skip-back sampling or Looper.",
+                source: "Koala Setup Guide p.7"
+            },
+            {
+                category: "koala",
+                title: "Koala Utility & Exit",
+                description: "Access Koala utility functions: [SHIFT] + pad [3] for headphone monitor, [SHIFT] + pad [13] for SETTINGS, [SHIFT] + pad [14] for EXPORT, [SHIFT] + [SUB PAD] for LOAD SONG. Exit Koala Controller Mode: [SHIFT] + [EXIT].",
+                source: "Koala Setup Guide p.7-8"
+            },
+            {
+                category: "koala",
+                title: "Koala SEQUENCE Page Controls",
+                description: "On Koala's [SEQUENCE] page: Bank [A/F]-[D/I] buttons select pattern banks A-D. Pads [1-8] select a pattern. [START/END] + pads [1-8] selects next pattern during playback. [SUB PAD] starts/stops pattern playback. [REC] starts/stops recording. [PATTERN EDIT] opens Piano Roll.",
+                source: "Koala Setup Guide p.8"
+            },
+            {
+                category: "koala",
+                title: "Koala PERFORM Page Controls",
+                description: "On Koala's [PERFORM] page: [SHIFT] + pad [16] opens the [MIXER] page. Bank [A/F]-[E/J] buttons control MUTE of effect BUS on the [MIXER] page. [HOLD] retains effect parameters.",
+                source: "Koala Setup Guide p.8"
+            },
+
+            // --- SERATO STUDIO ---
+            {
+                category: "serato_studio",
+                title: "Serato Studio Connection",
+                description: "Connect SP-404MK2 (v5.00+) to computer via USB. Launch Serato Studio (v2.3.2+); it auto-detects. 'Serato' logo appears on SP-404MK2 display, switching to mixer screen.",
+                source: "Serato Studio Guide p.3, 7"
+            },
+            {
+                category: "serato_studio",
+                title: "Serato Studio Bank Structure",
+                description: "SP-404MK2 banks E/J control Serato Studio (Bank E for Deck mode, Bank J for Scene mode). Other banks (A-D, F-I) remain SP-404MK2 Sampler mode.",
+                source: "Serato Studio Guide p.8"
+            },
+            {
+                category: "serato_studio",
+                title: "Serato Studio Pad Controls (Deck Mode)",
+                description: "In Deck mode (Bank E): Pads [1-16] play/trigger audio. [SHIFT] + Pads [1-16] deletes audio data.",
+                source: "Serato Studio Guide p.9"
+            },
+            {
+                category: "serato_studio",
+                title: "Serato Studio Pad Controls (Scene Mode)",
+                description: "In Scene mode (Bank J): Pads [1-16] select scenes. [SHIFT] + Pads [1-16] deletes scenes.",
+                source: "Serato Studio Guide p.9"
+            },
+            {
+                category: "serato_studio",
+                title: "Serato Studio Pad Controls (Mute Mode)",
+                description: "In Mute mode (activated by [GATE] button): Pads [1-16] mute/silence audio data in the deck.",
+                source: "Serato Studio Guide p.9"
+            },
+            {
+                category: "serato_studio",
+                title: "Serato Studio Transport Controls",
+                description: "Transport: [START/END] starts/stops scene/song. [PITCH/SPEED] + [VALUE] knob changes project BPM. [REC] starts recording. [SHIFT] + [REC] toggles overdub. [BPM SYNC] toggles BPM sync. [SHIFT] + [BPM SYNC] toggles key sync. [LOOP] toggles loop. [REVERSE] toggles reverse playback.",
+                source: "Serato Studio Guide p.9-10"
+            },
+            {
+                category: "serato_studio",
+                title: "Serato Studio Knob Controls",
+                description: "Knobs: [CTRL 1] for deck gain, [SHIFT] + [CTRL 1] for deck attack. [CTRL 2] for deck filter, [SHIFT] + [CTRL 2] for deck release. [CTRL 3] for deck pan, [SHIFT] + [CTRL 3] for deck tempo/glide.",
+                source: "Serato Studio Guide p.10"
+            },
+            {
+                category: "serato_studio",
+                title: "Serato Studio Other Functions",
+                description: "Other functions: [SUB PAD] retriggers last triggered pad (in deck mode). [MARK] accesses skip-back sampling or looper.",
+                source: "Serato Studio Guide p.10-11"
+            },
+
+            // --- SERATO DJ ---
+            {
+                category: "serato_dj",
+                title: "Serato DJ Connection",
+                description: "Connect SP-404MK2 (v5.00+) to computer via USB. Launch Serato DJ Lite/Pro (v3.3.1+); it auto-detects. 'Serato' logo appears on SP-404MK2 display, switching to mixer screen.",
+                source: "Serato DJ Guide p.3, 8"
+            },
+            {
+                category: "serato_dj",
+                title: "Serato DJ Overview",
+                description: "Control Serato DJ with SP-404MK2 pads/knobs for mixing songs. Apply SP-404MK2 effects to Serato DJ audio. Mix external audio (mic/guitar) or play built-in samples during DJ play.",
+                source: "Serato DJ Guide p.9"
+            },
+            {
+                category: "serato_dj",
+                title: "Serato DJ Browser Controls",
+                description: "Load track to Deck 1: Bank [A/F]. Load track to Deck 2: Bank [B/G]. Scroll library: [VALUE] knob (turn). Fast scroll: [SHIFT] + [VALUE] knob. Library Forward: Bank [E/J]. Library Back: Bank [D/I]. Sort by BPM: Bank [C/H]. Sort by Song: [SHIFT] + Bank [C/H].",
+                source: "Serato DJ Guide p.11"
+            },
+            {
+                category: "serato_dj",
+                title: "Serato DJ Mixer Controls",
+                description: "Deck 1 Volume: [CTRL 1]. Deck 2 Volume: [CTRL 2]. Crossfader/Monitor Balance: [CTRL 3]. Toggle [CTRL 3] function: [START/END]. Disable Crossfader: [PITCH/SPEED]. Toggle EFX screen: [MARK]. Toggle EFX Knob mode: [SHIFT] + [VALUE] knob (turn).",
+                source: "Serato DJ Guide p.12-13"
+            },
+            {
+                category: "serato_dj",
+                title: "Serato DJ Deck Play/Sync",
+                description: "Play/Pause: Pad [13] (Deck 1) / Pad [15] (Deck 2). Play from Top: [SHIFT] + Pad [13]/[15]. SYNC: Pad [10] (Deck 1) / Pad [12] (Deck 2). Disable SYNC: [SHIFT] + Pad [10]/[12].",
+                source: "Serato DJ Guide p.14"
+            },
+            {
+                category: "serato_dj",
+                title: "Serato DJ Deck Cue/Bend/Tempo",
+                description: "Temp Cue: Pad [9]/[11]. Delete Temp Cue: [SHIFT] + Pad [9]/[11]. Fast Forward: [SHIFT] + Pad [1]/[3]. Rewind: [SHIFT] + Pad [5]/[7]. Pitch Bend Up: Pad [1]/[3]. Pitch Bend Down: Pad [5]/[7]. Select Pitch Range: [SHIFT] + Pad [2]/[4]. Tempo Increase: Pad [2]/[4]. Tempo Decrease: Pad [6]/[8]. Toggle Keylock: [SHIFT] + Pad [6]/[8].",
+                source: "Serato DJ Guide p.15"
+            },
+            {
+                category: "serato_dj",
+                title: "Serato DJ Performance Pad Modes",
+                description: "404 Transport/Default Mode: [EXIT]. Hot Cue Mode: [PATTERN EDIT]. Auto Loop Mode: [LOOP]. Stem Control Mode: [PATTERN SELECT] (*Pro only). Roll Beat Jump Mode: [ROLL] (*Pro only). Serato DJ Sampler: [SUB PAD]. SP-404MK2 Sampler: [HOLD].",
+                source: "Serato DJ Guide p.16"
+            },
+            {
+                category: "serato_dj",
+                title: "Serato DJ Hot Cue Operations",
+                description: "Control 8 hot cues per deck (Deck 1: Pads 1-8, Deck 2: Pads 9-16). Write/Trigger Hot Cue: Press unlit pad during playback/pause. Delete Hot Cue: [SHIFT] + Hot Cue pad.",
+                source: "Serato DJ Guide p.17-18"
+            },
+            {
+                category: "serato_dj",
+                title: "Serato DJ Stem Control",
+                description: "Control 4 stems (Vocal, Melody, Bass, Drums) per deck (*Pro only). Trigger Stem ON/OFF: Pads [1],[5],[9],[13] (Vocal, Melody, Bass, Drums for Deck 1) / Pads [3],[7],[11],[15] (for Deck 2). Trigger Stem Effect ON/OFF: Pads [2],[6],[10],[14] (for Deck 1 FX) / Pads [4],[8],[12],[16] (for Deck 2 FX).",
+                source: "Serato DJ Guide p.19-20"
+            },
+            {
+                category: "serato_dj",
+                title: "Serato DJ Roll Beat Jump",
+                description: "Control beat jump (shifting beats) with [ROLL] button (*Pro only). Beat Rolls (1/16, 1/8, 1/4, 1/2): Pads [1-6] (Deck 1) / [3-8] (Deck 2). Beat Jump Left/Right: Pads [9]/[10] (Deck 1) / [11]/[12] (Deck 2). Halve/Double Beat Jump Size: Pads [13]/[14] (Deck 1) / [15]/[16] (Deck 2).",
+                source: "Serato DJ Guide p.21"
+            },
+            {
+                category: "serato_dj",
+                title: "Serato DJ Auto Loop",
+                description: "Control loop playback with [LOOP] button. Auto loops from 1/4 to 32 beats based on song BPM. Loop 1/2x / 2x: [SHIFT] + Pad [13]/[14] (Deck 1) / [15]/[16] (Deck 2). Loop SHIFT left/right: [SHIFT] + Pad [9]/[10] (Deck 1) / [11]/[12] (Deck 2).",
+                source: "Serato DJ Guide p.22"
+            },
+            {
+                category: "serato_dj",
+                title: "Serato DJ Sampler Control",
+                description: "Control Serato Sampler slots with [SUB PAD] button. Trigger Sampler Slot 1-8: Pads [1-8]. Sampler Bank A-D: Pads [9-12]. Set Sampler Output Deck 1/2/Master: Pads [13]/[14]/[15]. Mute Sampler: Pad [16].",
+                source: "Serato DJ Guide p.23"
+            },
+
+            // --- MIDI ---
+            {
+                category: "midi",
+                title: "MIDI Implementation Chart Overview",
+                description: "The SP-404MK2 supports MIDI for controlling various functions. Refer to the MIDI Implementation Chart for detailed information on transmitted/recognized notes, control changes, and system messages.",
+                source: "Reference Manual p.151"
+            },
+            {
+                category: "midi",
+                title: "MIDI Basic Channel Settings",
+                description: "MIDI Basic Channel defaults to 'x' (MIDI mode A) or 1-10 (MIDI mode B). Can be changed. MIDI mode A/B changes note number assignment.",
+                source: "Reference Manual p.151, 124"
+            },
+            {
+                category: "midi",
+                title: "MIDI Note Number Mapping",
+                description: "Pads [1-16] correspond to specific MIDI note numbers depending on MIDI Mode A/B. MIDI Mode B allows for Note Offset. EXT SOURCE also has a dedicated note number.",
+                source: "Reference Manual p.154-156"
+            },
+            {
+                category: "midi",
+                title: "MIDI Velocity & Pitch Bend",
+                description: "The unit transmits/recognizes Note On velocity. Pitch Bend messages are recognized, especially when INPUT FX is 'Vocoder' (MIDI CH 11).",
+                source: "Reference Manual p.152"
+            },
+            {
+                category: "midi",
+                title: "MIDI Control Change (CC) Messages",
+                description: "Control various parameters via CC messages. BUS1 (CH 1), BUS2 (CH 2), BUS3 (CH 3), BUS4 (CH 4), INPUT FX (CH 5) have dedicated CCs for EFX switch, EFX number, and Ctrl 1-6 knobs.",
+                source: "Reference Manual p.142-144, 152-153"
+            },
+            {
+                category: "midi",
+                title: "MIDI Control Change (DJ Mode)",
+                description: "In DJ Mode, CH1 (MIDI CH 1) and CH2 (MIDI CH 2) samples, and Pattern Sequencer (MIDI CH 3) respond to specific CCs for volume, crossfader, play/pause, sync, cue, bend, and tempo controls.",
+                source: "Reference Manual p.153"
+            },
+            {
+                category: "midi",
+                title: "MIDI Control Change (Looper Mode)",
+                description: "In Looper Mode (MIDI CH 1), [DEL], [REC], [RESAMPLE], [CTRL 3] knob (BPM/PLAY-RATE), [EXIT], [PITCH/SPEED], [SHIFT]+[PATTERN SELECT] can be controlled via dedicated CC messages.",
+                source: "Reference Manual p.154"
+            },
+            {
+                category: "midi",
+                title: "MIDI Program Change Messages",
+                description: "Program Change messages (PC#0-15) correspond to Patterns 1-16 respectively, allowing external pattern recall.",
+                source: "Reference Manual p.154"
+            },
+            {
+                category: "midi",
+                title: "MIDI Sync Settings",
+                description: "Configure MIDI Sync source (Auto, Internal, MIDI, USB) and MIDI Sync Out (clocks, start/stop transmission). Adjust SYNC Delay for latency compensation.",
+                source: "Reference Manual p.123-124"
+            },
+            {
+                category: "midi",
+                title: "MIDI Note Out & Thru",
+                description: "Enable SEQ Note Out (pattern notes via MIDI OUT) and PAD Note Out (pad presses via MIDI OUT). Soft Through and USB-MIDI Thru allow MIDI signal pass-through.",
+                source: "Reference Manual p.124"
+            },
+            {
+                category: "midi",
+                title: "MIDI EXT SRC Trigger Mode",
+                description: "Control [EXT SOURCE] button behavior via external MIDI: TOGGLE (note-on toggles on/off), GATE (note-on turns on, note-off turns off), THROUGH (unaffected by MIDI).",
+                source: "Reference Manual p.124"
+            },
+
+            // --- TROUBLESHOOTING ---
+            {
+                category: "troubleshooting",
+                title: "Battery Low!",
+                description: "Explanation: Batteries are nearly depleted. Action: Replace batteries or switch to AC adaptor.",
+                source: "Reference Manual p.149"
+            },
+            {
+                category: "troubleshooting",
+                title: "Unsupported FILE",
+                description: "Explanation: File type not supported. Action: Check file extension, format, and folder directory. Supported: WAV, AIFF, MP3.",
+                source: "Reference Manual p.149"
+            },
+            {
+                category: "troubleshooting",
+                title: "No SD CARD!",
+                description: "Explanation: No SD card inserted or not fully inserted. Action: Turn off power, ensure SD card is fully inserted, then turn power back on.",
+                source: "Reference Manual p.149"
+            },
+            {
+                category: "troubleshooting",
+                title: "Unsupported SD Card!",
+                description: "Explanation: Unsupported type of SD card. Action: Format the SD card on the unit.",
+                source: "Reference Manual p.149"
+            },
+            {
+                category: "troubleshooting",
+                title: "SD CARD Protected!",
+                description: "Explanation: Write-protect feature enabled on SD card. Action: Unlock the lock switch on the left side of the SD card.",
+                source: "Reference Manual p.149"
+            },
+            {
+                category: "troubleshooting",
+                title: "SD CARD Full!",
+                description: "Explanation: SD card has run out of free space. Action: Delete any unneeded data on the unit or card.",
+                source: "Reference Manual p.149"
+            },
+            {
+                category: "troubleshooting",
+                title: "Internal Storage Full!",
+                description: "Explanation: There is not enough storage capacity left on the unit. Action: Delete any unneeded data on the unit.",
+                source: "Reference Manual p.150"
+            },
+            {
+                category: "troubleshooting",
+                title: "Storage Error!",
+                description: "Explanation: A problem has occurred with the internal storage. Action: Try performing a factory reset.",
+                source: "Reference Manual p.150"
+            },
+            {
+                category: "troubleshooting",
+                title: "Protected!",
+                description: "Explanation: Function can't be executed because bank protect is enabled. Action: Use a bank for which bank protect is disabled, or disable bank protect on the currently selected bank.",
+                source: "Reference Manual p.150"
+            },
+            {
+                category: "troubleshooting",
+                title: "Max Length Pattern",
+                description: "Explanation: Maximum number of notes that can be recorded to the pattern sequencer has been exceeded. Action: Reduce the number of notes in the pattern, or shorten and split the pattern to record.",
+                source: "Reference Manual p.150"
+            },
+
+            // --- PRO TIPS (AI Generated) ---
+            {
+                category: "pro_tips",
+                title: "Creative Resampling Chains",
+                description: "Layer effects by resampling a sample with BUS FX, then resample the new sample with different effects. Repeat to build complex textures and evolving soundscapes.",
+                source: "AI Generated"
+            },
+            {
+                category: "pro_tips",
+                title: "Parameter Lock Automation",
+                description: "Utilize TR-REC's motion recording ([ROLL] + [CTRL 1/2/3] knobs) to automate subtle (or extreme) parameter changes for effects or sample playback, adding dynamic movement to your patterns.",
+                source: "AI Generated"
+            },
+            {
+                category: "pro_tips",
+                title: "Skip-Back Looping for Live Remixing",
+                description: "Use Skip-Back Sampling in conjunction with the Looper. Capture a perfect live improvisation with Skip-Back, then immediately switch to Looper mode to overdub and build on that captured moment in real-time.",
+                source: "AI Generated"
+            },
+            {
+                category: "pro_tips",
+                title: "Sidechain Compression with Mute Groups",
+                description: "Achieve a 'sidechain' pumping effect by setting up a Mute Group for your bassline/pads and triggering a very short, silent sample (or a kick drum) on a different pad within that same Mute Group. This will momentarily duck the volume of the other elements.",
+                source: "AI Generated"
+            },
+            {
+                category: "pro_tips",
+                title: "External MIDI Control for Dynamic FX",
+                description: "Map external MIDI controllers to effect parameters (CC#16-19, CC#80-82) for hands-on, expressive control of your BUS FX. This allows for more fluid and performative effect manipulation than just the onboard knobs.",
+                source: "AI Generated"
+            }
+        ];
+
+        const tipsContainer = document.getElementById('tips-container');
+        const categoryButtons = document.querySelectorAll('.tip-category-button');
+        const tipModal = document.getElementById('tip-modal');
+        const closeModalButton = document.getElementById('close-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDescription = document.getElementById('modal-description');
+        const modalSource = document.getElementById('modal-source');
+        const searchInput = document.getElementById('search-input');
+        const searchButton = document.getElementById('search-button');
+        const copyTipButton = document.getElementById('copy-tip-button');
+        const externalLinkButton = document.getElementById('external-link-button');
+        const downloadPdfButton = document.getElementById('download-pdf-button');
+
+        const aiSuggestionsSection = document.getElementById('ai-suggestions-section');
+        const aiSuggestionsContent = document.getElementById('ai-suggestions-content');
+        const getAiSuggestionsButton = document.getElementById('get-ai-suggestions');
+        const aiLoadingIndicator = document.getElementById('ai-loading-indicator');
+
+        let currentCategory = 'all'; // Keep track of the currently active category
+        let currentTip = null; // Store the tip currently open in the modal
+
+        // Map categories to Font Awesome icons
+        const categoryIcons = {
+            concepts: 'fa-solid fa-lightbulb',
+            sampling: 'fa-solid fa-wave-square',
+            effects: 'fa-solid fa-sliders-h',
+            patterns: 'fa-solid fa-grip-horizontal',
+            tempo: 'fa-solid fa-tachometer-alt',
+            djmode: 'fa-solid fa-compact-disc',
+            shortcuts: 'fa-solid fa-keyboard',
+            utility: 'fa-solid fa-cogs',
+            koala: 'fa-solid fa-headphones',
+            serato_studio: 'fa-solid fa-laptop-code',
+            serato_dj: 'fa-solid fa-record-vinyl',
+            midi: 'fa-solid fa-music',
+            troubleshooting: 'fa-solid fa-exclamation-triangle',
+            pro_tips: 'fa-solid fa-star'
+        };
+
+        function getIconHtml(category) {
+            const iconClass = categoryIcons[category] || 'fa-solid fa-info-circle'; // Default icon
+            return `<i class="${iconClass} tip-icon"></i>`;
+        }
+
+        function displayTips(category, searchTerm = '') {
+            tipsContainer.innerHTML = ''; // Clear existing tips
+            let filteredTips = tipsData;
+
+            // First, filter by category if not 'all'
+            if (category !== 'all') {
+                filteredTips = tipsData.filter(tip => tip.category === category);
+            }
+
+            // Then, filter by search term if provided
+            if (searchTerm) {
+                const lowerCaseSearchTerm = searchTerm.toLowerCase();
+                filteredTips = filteredTips.filter(tip =>
+                    tip.title.toLowerCase().includes(lowerCaseSearchTerm) ||
+                    tip.description.toLowerCase().includes(lowerCaseSearchTerm)
+                );
+            }
+
+            if (filteredTips.length === 0) {
+                tipsContainer.innerHTML = '<p class="text-center text-gray-400 col-span-full">No tips found for this category or search term.</p>';
+                return;
+            }
+
+            filteredTips.forEach(tip => {
+                const tipElement = document.createElement('div');
+                tipElement.className = 'card tip-item cursor-pointer';
+                tipElement.innerHTML = `
+                    <h4 class="text-xl font-semibold text-white mb-2">${getIconHtml(tip.category)}${tip.title}</h4>
+                    <p class="text-gray-400 text-sm mb-2">${tip.description}</p>
+                    <span class="text-xs text-gray-500">${tip.source}</span>
+                `;
+                tipElement.addEventListener('click', () => openModal(tip));
+                tipsContainer.appendChild(tipElement);
+            });
+        }
+
+        async function getAISuggestions(tip) {
+            aiSuggestionsContent.innerHTML = ''; // Clear previous suggestions
+            aiLoadingIndicator.classList.remove('hidden');
+            getAiSuggestionsButton.disabled = true;
+
+            const prompt = `Provide a concise, advanced "pro tip" or creative suggestion for using the Roland SP-404MK2 related to the following tip. Also, explain why this tip matters or how it enhances workflow/creativity.
+            
+            Original Tip Title: "${tip.title}"
+            Original Tip Description: "${tip.description}"
+            
+            Format your response as:
+            "Pro Tip: [Your creative pro tip here]
+            Why it matters: [Explanation of its importance/benefit here]"`;
+
+            try {
+                const apiKey = ""; // Canvas will automatically provide the API key
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                const payload = {
+                    contents: [{ role: "user", parts: [{ text: prompt }] }]
+                };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    // Replace newlines with <br> for HTML display
+                    aiSuggestionsContent.innerHTML = text.replace(/\n/g, '<br>');
+                    // Store the suggestion on the tip object to avoid re-fetching
+                    tip.ai_suggestion = text;
+                } else {
+                    aiSuggestionsContent.textContent = "Could not generate suggestions. Please try again.";
+                }
+            } catch (error) {
+                console.error("Error fetching AI suggestions:", error);
+                aiSuggestionsContent.textContent = "Failed to fetch suggestions due to an error.";
+            } finally {
+                aiLoadingIndicator.classList.add('hidden');
+                getAiSuggestionsButton.disabled = false;
+            }
+        }
+
+
+        function openModal(tip) {
+            currentTip = tip; // Set the current tip
+            modalTitle.innerHTML = `${getIconHtml(tip.category)}${tip.title}`; /* Add icon to modal title */
+            modalDescription.textContent = tip.description;
+            modalSource.textContent = tip.source;
+
+            // Handle Copy and External Link Buttons
+            copyTipButton.onclick = () => copyTipToClipboard(tip);
+            if (tip.link) {
+                externalLinkButton.href = tip.link;
+                externalLinkButton.classList.remove('hidden');
+            } else {
+                externalLinkButton.classList.add('hidden');
+            }
+
+
+            // Handle AI suggestions section
+            if (tip.source !== "AI Generated") {
+                aiSuggestionsSection.classList.remove('hidden');
+                if (tip.ai_suggestion) {
+                    // Use innerHTML because AI suggestion might contain <br>
+                    aiSuggestionsContent.innerHTML = tip.ai_suggestion.replace(/\n/g, '<br>');
+                    getAiSuggestionsButton.classList.add('hidden'); // Hide button if already generated
+                } else {
+                    aiSuggestionsContent.textContent = "Click 'Get AI Suggestions' for more advanced tips and insights!";
+                    getAiSuggestionsButton.classList.remove('hidden');
+                }
+            } else {
+                aiSuggestionsSection.classList.add('hidden'); // Hide for AI Generated tips
+            }
+
+            tipModal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            tipModal.classList.add('hidden');
+            aiSuggestionsContent.innerHTML = ''; // Clear content when closing modal
+            aiLoadingIndicator.classList.add('hidden');
+            getAiSuggestionsButton.disabled = false;
+        }
+
+        function copyTipToClipboard(tip) {
+            const tipText = `Tip: ${tip.title}\nDescription: ${tip.description}\nSource: ${tip.source}`;
+            // Use document.execCommand('copy') for better compatibility in iframes
+            const textarea = document.createElement('textarea');
+            textarea.value = tipText;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                alert('Tip copied to clipboard!'); // Replace with custom modal if preferred
+            } catch (err) {
+                console.error('Failed to copy tip: ', err);
+                alert('Failed to copy tip.');
+            } finally {
+                document.body.removeChild(textarea);
+            }
+        }
+
+        function generatePdf() {
+            const doc = new jsPDF();
+            let y = 10;
+            const margin = 10;
+            const lineHeight = 7;
+            const pageHeight = doc.internal.pageSize.height;
+
+            doc.setFontSize(22);
+            doc.text("Charles Paris's SP-404MK2 Guide: Tips & Tricks", margin, y);
+            y += 10;
+            doc.setFontSize(12);
+            doc.text("Comprehensive Tips & Tricks Guide", margin, y);
+            y += 20;
+
+            tipsData.forEach((tip, index) => {
+                if (y + (lineHeight * 5) > pageHeight - margin) { // Estimate space needed for a tip
+                    doc.addPage();
+                    y = margin;
+                }
+
+                doc.setFontSize(14);
+                doc.setFont(undefined, 'bold');
+                doc.text(`${index + 1}. ${tip.title}`, margin, y);
+                y += lineHeight;
+
+                doc.setFontSize(10);
+                doc.setFont(undefined, 'normal');
+                const descriptionLines = doc.splitTextToSize(tip.description, doc.internal.pageSize.width - (2 * margin));
+                doc.text(descriptionLines, margin, y);
+                y += (descriptionLines.length * lineHeight);
+
+                doc.setFontSize(8);
+                doc.setTextColor(150); // Grey color for source
+                doc.text(`Source: ${tip.source}`, margin, y);
+                doc.setTextColor(0); // Reset text color
+                y += (lineHeight * 2); // Space after tip
+            });
+
+            doc.save('Charles_Paris_SP404MK2_Guide_Tips.pdf');
+        }
+
+
+        // Event Listeners for category buttons
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                currentCategory = button.dataset.category; // Update current category
+                displayTips(currentCategory, searchInput.value); // Re-display with current search term
+            });
+        });
+
+        // Event Listener for search button
+        searchButton.addEventListener('click', () => {
+            // Ensure 'All Tips' category is active when searching from the search button
+            categoryButtons.forEach(btn => {
+                if (btn.dataset.category === 'all') {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            currentCategory = 'all'; // Reset category to 'all' for general search
+            displayTips(currentCategory, searchInput.value);
+        });
+
+        // Event Listener for Enter key in search input
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                // Same behavior as clicking search button
+                searchButton.click();
+            }
+        });
+
+        // Event Listener for Get AI Suggestions button
+        getAiSuggestionsButton.addEventListener('click', () => {
+            if (currentTip) {
+                getAISuggestions(currentTip);
+            }
+        });
+
+        // Event Listener for Download PDF button
+        downloadPdfButton.addEventListener('click', generatePdf);
+
+        closeModalButton.addEventListener('click', closeModal);
+        tipModal.addEventListener('click', (e) => {
+            if (e.target === tipModal) {
+                closeModal();
+            }
+        });
+
+        // Initial display
+        displayTips('all');
+    </script>
+</body>
+</html>
